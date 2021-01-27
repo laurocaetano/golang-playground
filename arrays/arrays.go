@@ -49,3 +49,28 @@ func MergeSortedArrays(a, b []int) []int {
 
 	return merged
 }
+
+func FindSumOfTwo(arr []int, n int) [2]int {
+	mapOfDifference := make(map[int]int)
+	var sum [2]int
+
+	for i := range arr {
+		num := arr[i]
+		difference := n - num
+		mapOfDifference[difference] = num
+	}
+
+	for i := range arr {
+		num := arr[i]
+
+		v, ok := mapOfDifference[num]
+
+		if ok {
+			sum[0] = v
+			sum[1] = num
+			break
+		}
+	}
+
+	return sum
+}
